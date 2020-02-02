@@ -16,6 +16,12 @@ fun <T> Single<T>.toLiveData() :  LiveData<T> {
     return LiveDataReactiveStreams.fromPublisher(this.toFlowable())
 }
 
+fun <T> Single<T>.toResourceLiveData() : LiveData<Resource<T>> {
+    val mapped = this.map { Resource.success(it) }
+        .onErrorReturn { Resource.error(it) }
+    return LiveDataReactiveStreams.fromPublisher(mapped.toFlowable())
+}
+
 fun <T> Maybe<T>.toLiveData() :  LiveData<T> {
     return LiveDataReactiveStreams.fromPublisher(this.toFlowable())
 }

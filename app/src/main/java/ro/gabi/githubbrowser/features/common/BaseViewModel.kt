@@ -7,8 +7,5 @@ import ro.gabi.githubbrowser.data.GithubRepository
 
 abstract class BaseViewModel : ViewModel() {
 
-    protected val _errorLd = MutableLiveData<Throwable>()
-    val errorLd: LiveData<Throwable>
-        get() = _errorLd
 
 }

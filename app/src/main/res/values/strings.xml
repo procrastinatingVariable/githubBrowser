@@ -6,4 +6,5 @@
     <string name="placeholder_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et mauris hendrerit, ultricies nibh id, congue odio. Nullam non auctor dui. Pellentesque turpis velit, mattis in odio vitae, fringilla ultrices orci.</string>
     <string name="repositories">Repositories</string>
     <string name="repository">Repository</string>
+    <string name="generic_error">An error occured. Please try again later.</string>
 </resources>
