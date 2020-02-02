@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_repository_list.*
 import org.koin.android.ext.android.inject
@@ -26,7 +27,9 @@ class RepositoryListFragment : BaseFragment() {
 
     private val adapterFactory: RecyclerViewAdapterFactory by inject()
     private val repoAdapter: RepoListAdapter by lazy {
-        adapterFactory.create(requireContext(), RepoListAdapter::class)
+        adapterFactory.create(requireContext(), RepoListAdapter::class).apply {
+            onItemClick = { goToDetails(it) }
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -66,5 +69,10 @@ class RepositoryListFragment : BaseFragment() {
             repoAdapter.submitList(repos)
             swipeRefreshLayout.isRefreshing = false
         })
+    }
+
+    private fun goToDetails(repo: GithubRepository) {
+        val action = RepositoryListFragmentDirections.actionRepositoryListFragmentToRepositoryDetailsFragment(repo)
+        findNavController().navigate(action)
     }
 }

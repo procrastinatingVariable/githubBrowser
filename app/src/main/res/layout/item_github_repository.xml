@@ -14,7 +14,7 @@
         android:maxLength="22"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Flutter"/>
@@ -26,7 +26,7 @@
         android:maxLength="16"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         app:layout_constraintTop_toBottomOf="@id/repoNameTv"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="google"/>
@@ -36,6 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
         app:layout_constraintTop_toBottomOf="@id/userNameTv"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/placeholder_description"/>
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_star"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="23.3"/>
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_fork"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/starsTv"

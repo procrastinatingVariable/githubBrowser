@@ -12,20 +12,24 @@ import ro.gabi.githubbrowser.common.util.FunNumberFormatter
 import ro.gabi.githubbrowser.data.GithubRepository
 import ro.gabi.githubbrowser.features.common.ListItemViewHolder
 
-class RepoListAdapter(context: Context) : ListAdapter<GithubRepository, RepoListAdapter.RepoViewHolder>(diffUtil) {
+typealias OnItemClickListener = (GithubRepository) -> Unit
+
+class RepoListAdapter(context: Context, var onItemClick: OnItemClickListener = {}) :
+    ListAdapter<GithubRepository, RepoListAdapter.RepoViewHolder>(diffUtil) {
 
     private var layoutInflater = LayoutInflater.from(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder =
         RepoViewHolder(
-            layoutInflater.inflate(R.layout.item_github_repository, parent, false)
+            layoutInflater.inflate(R.layout.item_github_repository, parent, false),
+            onItemClick
         )
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
-    class RepoViewHolder(view: View) : ListItemViewHolder<GithubRepository>(view) {
+    class RepoViewHolder(view: View, private val onItemClick: OnItemClickListener) : ListItemViewHolder<GithubRepository>(view) {
 
         override fun bind(data: GithubRepository) {
             containerView.repoNameTv.text = data.name
@@ -33,6 +37,7 @@ class RepoListAdapter(context: Context) : ListAdapter<GithubRepository, RepoList
             containerView.descriptionTv.text = data.description
             containerView.starsTv.text = FunNumberFormatter.format(data.stars)
             containerView.forksTv.text = FunNumberFormatter.format(data.forks)
+            containerView.setOnClickListener { onItemClick(data) }
         }
 
     }
@@ -50,6 +55,5 @@ class RepoListAdapter(context: Context) : ListAdapter<GithubRepository, RepoList
             ): Boolean = oldItem.equals(newItem)
         }
     }
-
 
 }

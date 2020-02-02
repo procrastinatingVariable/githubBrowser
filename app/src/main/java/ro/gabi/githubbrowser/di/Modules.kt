@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ro.gabi.githubbrowser.data.repository.RepoRepository
 import ro.gabi.githubbrowser.data.repository.RepoRepositoryImpl
 import ro.gabi.githubbrowser.features.common.RecyclerViewAdapterFactory
+import ro.gabi.githubbrowser.features.repodetails.RepositoryDetailsViewModel
 import ro.gabi.githubbrowser.features.repolist.RepositoryListViewModel
 import ro.gabi.githubbrowser.network.ApiClient
 import ro.gabi.githubbrowser.network.ApiService
@@ -67,5 +68,7 @@ val dataModule = module {
 val viewModelModule = module {
 
     viewModel { RepositoryListViewModel(get()) }
+
+    viewModel { RepositoryDetailsViewModel() }
 
 }

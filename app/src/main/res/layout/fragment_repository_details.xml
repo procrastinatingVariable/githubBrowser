@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="ro.gabi.githubbrowser.features.repodetails.RepositoryDetailsViewModel" />
+
+        <import type="ro.gabi.githubbrowser.common.util.FunNumberFormatter"
+            alias="NumberFormatter"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
+        android:paddingTop="@dimen/padding_normal"
+        tools:context=".features.repodetails.RepositoryDetailsFragment">
+
+        <ImageView
+            android:id="@+id/ownerAvatarIv"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repoNameTv"
+            app:imageUrl="@{viewModel.repositoryLd.owner.avatarUrl}"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/ownerNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:text="@{viewModel.repositoryLd.owner.name}"
+            app:layout_constraintTop_toBottomOf="@id/ownerAvatarIv"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="User" />
+
+        <TextView
+            android:id="@+id/repoNameTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:drawableEnd="@drawable/ic_link"
+            android:ellipsize="end"
+            android:maxLength="22"
+            android:maxLines="1"
+            android:text="@{viewModel.repositoryLd.name}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Flutter" />
+
+        <TextView
+            android:id="@+id/starsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_star"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:text="@{NumberFormatter.INSTANCE.format(viewModel.repositoryLd.stars)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="23.3" />
+
+        <TextView
+            android:id="@+id/forksTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_fork"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@{NumberFormatter.INSTANCE.format(viewModel.repositoryLd.forks)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/starsTv"
+            tools:text="23.3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

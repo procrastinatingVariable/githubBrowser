@@ -9,5 +9,18 @@
         android:id="@+id/repositoryListFragment"
         android:name="ro.gabi.githubbrowser.features.repolist.RepositoryListFragment"
         android:label="@string/repositories"
-        tools:layout="@layout/fragment_repository_list" />
+        tools:layout="@layout/fragment_repository_list" >
+        <action
+            android:id="@+id/action_repositoryListFragment_to_repositoryDetailsFragment"
+            app:destination="@id/repositoryDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        android:name="ro.gabi.githubbrowser.features.repodetails.RepositoryDetailsFragment"
+        android:label="@string/repository"
+        tools:layout="@layout/fragment_repository_details" >
+        <argument
+            app:argType="ro.gabi.githubbrowser.data.GithubRepository"
+            android:name="githubRepository" />
+    </fragment>
 </navigation>
