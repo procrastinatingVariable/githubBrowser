@@ -69,6 +69,6 @@ val viewModelModule = module {
 
     viewModel { RepositoryListViewModel(get()) }
 
-    viewModel { RepositoryDetailsViewModel() }
+    viewModel { RepositoryDetailsViewModel(get()) }
 
 }

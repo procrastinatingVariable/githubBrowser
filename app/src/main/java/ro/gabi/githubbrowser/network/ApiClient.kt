@@ -1,5 +1,7 @@
 package ro.gabi.githubbrowser.network
 
+import android.net.Uri
+import io.reactivex.Maybe
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -19,5 +21,11 @@ class ApiClient(private val apiService: ApiService) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun getReadmeUrl(repo: GithubRepository): Single<Uri> {
+        return apiService.getReadme(repo.fullName, repo.defaultBranch)
+            .map { response -> Uri.parse(response.url) }
+    }
+
 
 }

@@ -25,3 +25,8 @@ data class GetRepositoriesResponse(
     )
 
 }
+
+
+data class GetReadmeResponse(
+    @SerializedName("html_url") val url: String
+)

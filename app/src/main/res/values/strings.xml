@@ -7,4 +7,5 @@
     <string name="repositories">Repositories</string>
     <string name="repository">Repository</string>
     <string name="generic_error">An error occured. Please try again later.</string>
+    <string name="no_readme">No readme to show</string>
 </resources>

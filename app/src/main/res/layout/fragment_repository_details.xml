@@ -81,6 +81,25 @@
             app:layout_constraintTop_toBottomOf="@id/starsTv"
             tools:text="23.3" />
 
+        <WebView
+            android:id="@+id/readmeWv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintTop_toBottomOf="@id/ownerNameTv"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/readmeWv"
+            app:layout_constraintBottom_toBottomOf="@id/readmeWv"
+            app:layout_constraintStart_toStartOf="@id/readmeWv"
+            app:layout_constraintEnd_toEndOf="@id/readmeWv"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
